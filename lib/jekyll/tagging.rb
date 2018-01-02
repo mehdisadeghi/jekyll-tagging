@@ -91,8 +91,8 @@ module Jekyll
     end
 
     def active_tags
-      return site.tags unless site.config["ignored_tags"]
-      site.tags.reject { |t| site.config["ignored_tags"].include? t[0] }
+      threshold = (config["tag_threshold"] || '1').to_i
+      site.tags.reject { |tag, posts| site.config["ignored_tags"].include? tag or posts.size < threshold}
     end
 
     def pretty?
@@ -106,6 +106,8 @@ module Jekyll
     def initialize(site, base, dir, name, data = {})
       self.content = data.delete('content') || ''
       self.data    = data
+
+      self.data['title'] = site.layouts[site.config['tag_page_layout']].data['title'] || site.config['tag_page_title'] || "Tag #{data['tag']}"
 
       super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name)
     end
