@@ -1,3 +1,17 @@
+= jekyll-tagging-lite
+
+Re-published to rubygems as `jekyll-tagging-lite` by @mehdisadeghi.
+
+I have merged some waiting PRs and also made a change to cache the tag_cloud function's result which
+signifcantly increases build time (from 12s down to 5s) on my [website](https://github.com/mehdisadeghi/mehdix.ir).
+
+Moreover, I restructed the files so one can simple add `gem jekyll-tagging-lite` to Gemfile and is done. No need to
+requiring `jekyll/tagging` (was annoying for me).
+
+For the list of changes made to the upstream see the commit history.
+
+The instructions below remain the same, except for the gem name and the requiring part.
+
 = jekyll-tagging
 
 By Arne Eilermann <mailto:arne@kleinerdrei.net> and Jens Wille <mailto:jens.wille@uni-koeln.de>
