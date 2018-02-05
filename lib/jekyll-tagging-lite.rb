@@ -117,13 +117,13 @@ module Jekyll
   end
 
   module TaggingFilters
-
     include Helpers
+    @@tag_cloud = nil
 
     def tag_cloud(site)
-      active_tag_data.map { |tag, set|
-        tag_link(tag, tag_url(tag), :class => "set-#{set}")
-      }.join(' ')
+      @@tag_cloud ||= active_tag_data.map { |tag, set|
+          tag_link(tag, tag_url(tag), :class => "set-#{set}")
+        }.join(' ')
     end
 
     def tag_link(tag, url = tag_url(tag), html_opts = nil)
