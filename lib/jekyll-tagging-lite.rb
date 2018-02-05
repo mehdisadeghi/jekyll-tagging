@@ -2,10 +2,10 @@ require 'nuggets/range/quantile'
 require 'nuggets/i18n'
 require 'erb'
 
+
 module Jekyll
 
   module Helpers
-
     # call-seq:
     #   jekyll_tagging_slug(str) => new_str
     #
@@ -14,11 +14,9 @@ module Jekyll
     def jekyll_tagging_slug(str)
       str.to_s.replace_diacritics.downcase.gsub(/\s/, '-')
     end
-
   end
 
   class Tagger < Generator
-
     include Helpers
 
     safe true
@@ -75,7 +73,7 @@ module Jekyll
     end
 
     def add_tag_cloud(num = 5, name = 'tag_data')
-      classifier = config['tag_classifier'] || 'linear'
+      classifier = site.config['tag_classifier'] || 'linear'
       s, t = site, { name => calculate_tag_cloud(@@classifiers[classifier].curry[num]) }
       s.respond_to?(:add_payload) ? s.add_payload(t) : s.config.update(t)
     end
@@ -91,8 +89,8 @@ module Jekyll
     end
 
     def active_tags
-      threshold = (config["tag_threshold"] || '1').to_i
-      site.tags.reject { |tag, posts| site.config["ignored_tags"].include? tag or posts.size < threshold}
+      threshold = (site.config["tag_threshold"] || '1').to_i
+      site.tags.reject { |tag, posts| (site.config["ignored_tags"] || "").include? tag or posts.size < threshold}
     end
 
     def pretty?
@@ -155,6 +153,7 @@ module Jekyll
       return site.config['tag_data'] unless site.config["ignored_tags"]
       site.config["tag_data"].reject { |tag, set| site.config["ignored_tags"].include? tag }
     end
+
   end
 
 end
