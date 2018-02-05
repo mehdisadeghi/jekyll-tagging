@@ -1,4 +1,4 @@
-# jekyll-tagging-lite
+# jekyll-tagging-lite [![Gem Version](https://badge.fury.io/rb/jekyll-tagging-lite.svg)](https://badge.fury.io/rb/jekyll-tagging-lite)
 
 Re-published to rubygems as `jekyll-tagging-lite` by @mehdisadeghi.
 

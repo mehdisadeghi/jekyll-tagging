@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ["lib"]
   s.extra_rdoc_files = ["ChangeLog"]
-  s.files = ["ChangeLog", "README.rdoc", "lib/jekyll-tagging-lite.rb"]
+  s.files = ["ChangeLog", "README.md", "lib/jekyll-tagging-lite.rb"]
   s.post_install_message = "\njekyll-tagging-lite [2018-03-05]:\n\n* This is jekyll-tagging with some PRs merged and caching. \n\n"
   s.rdoc_options = ["--title", "jekyll-tagging-lite docs", "--line-numbers", "--all", "--main", "ChangeLog"]
 
