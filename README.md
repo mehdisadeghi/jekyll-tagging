@@ -1,4 +1,4 @@
-= jekyll-tagging-lite
+# jekyll-tagging-lite
 
 Re-published to rubygems as `jekyll-tagging-lite` by @mehdisadeghi.
 
@@ -12,101 +12,101 @@ For the list of changes made to the upstream see the commit history.
 
 The instructions below remain the same, except for the gem name and the requiring part.
 
-= jekyll-tagging
+# jekyll-tagging
 
 By Arne Eilermann <mailto:arne@kleinerdrei.net> and Jens Wille <mailto:jens.wille@uni-koeln.de>
 
 jekyll-tagging is a Jekyll plugin, to add a tag cloud and per tag pages plus feeds to your Jekyll generated Website.
 
-== Tags
+## Tags
 This plugin does not reinvent Jekyll's tagging feature. It just makes it easy to use.
 <https://jekyllrb.com/docs/frontmatter/>
 
 Add space-delimited lowercase tags to FrontMatter, e.g.
 
-  ---
+  ~~~~
   author: Willow Rosenberg
   tags: feminism anti-capitalism witchcraft
-  ---
+  ~~~~
 
-== Usage
+## Usage
 
 Install it:
 
-  gem install jekyll-tagging
+    gem install jekyll-tagging
 
 Add this line to your Jekyll project's Gemfile:
 
-  gem 'jekyll-tagging'
+    group :jekyll_plugins do
+      gem "jekyll-tagging-lite"
+    end
 
-Add the following to your <tt>_plugins/ext.rb</tt> file:
+And in your `_config.yml` you have to define your layout used to generate tag pages like:
 
-  require 'jekyll/tagging'
+    tag_page_layout: tag_page
+    tag_page_dir: tag
 
-And in your <tt>_config.yml</tt> you have to define your layout used to generate tag pages like:
+This will look for `_layouts/tag_page.html`>, and use it to generate tag pages into the `_site/tag` directory.
 
-  tag_page_layout: tag_page
-  tag_page_dir: tag
+Now you have a new filter called `tag_cloud` which you can use with the `site` object as argument in your layout to get a cloud of all your site's tags. The tags are linked to their related tag page. Furthermore, you have a `tags` filter which you can feed with a `post` or a `page` object to get a link list of all its tags.
 
-This will look for <tt>_layouts/tag_page.html</tt>, and use it to generate tag pages into the <tt>_site/tag</tt> directory.
-
-Now you have a new filter called <tt>tag_cloud</tt> which you can use with the <tt>site</tt> object as argument in your layout to get a cloud of all your site's tags. The tags are linked to their related tag page. Furthermore, you have a <tt>tags</tt> filter which you can feed with a <tt>post</tt> or a <tt>page</tt> object to get a link list of all its tags.
-
-You can optionally define a per tag Atom/RSS feed.  In your <tt>_config.yml</tt> define the following:
+You can optionally define a per tag Atom/RSS feed.  In your `_config.yml` define the following:
 
   tag_feed_layout: tag_feed
   tag_feed_dir: tag
 
-(<tt>tag_page_dir</tt> and <tt>tag_feed_dir</tt> can have the same value.)
+(`tag_page_dir` and `tag_feed_dir` can have the same value.)
 
-=== Pretty page links
+### Pretty page links
 
-If your Jekyll <tt>permalink</tt> configuration is set to something other than <tt>:pretty</tt>, and you still want to have pretty tag links define the following in your <tt>_config.yml</tt>:
+If your Jekyll `permalink` configuration is set to something other than `:pretty`, and you still want to have pretty tag links define the following in your `_config.yml`:
 
-  tag_permalink_style: pretty
+    tag_permalink_style: pretty
 
-=== Ignoring tags
+### Ignoring tags
 
-Sometimes you don't want tag pages generated for certain pages. That's ok! Just add <tt>ignored_tags: [tags,to,ignore]</tt> to your <tt>_config.yml</tt>
+Sometimes you don't want tag pages generated for certain pages. That's ok! Just add `ignored_tags: [tags,to,ignore]` to your `_config.yml`
 
-=== Extra data on tag pages
+### Extra data on tag pages
 
-You can attach extra data to generated tag pages by specifying <tt>tag_page_data</tt> in <tt>_config.yml</tt> (this also works for <tt>tag_feed_data</tt>). For example, you might want to exclude tag pages from being picked up by `jekyll-sitemap`:
+You can attach extra data to generated tag pages by specifying `tag_page_data` in `_config.yml` (this also works for `tag_feed_data`). For example, you might want to exclude tag pages from being picked up by `jekyll-sitemap`:
 
-  tag_page_data:
-    sitemap: false
+    tag_page_data:
+      sitemap: false
 
-=== Example tag page layout
+### Example tag page layout
 
-(Save this to <tt>_layouts/tag_page.html</tt> if using the <tt>_config.yml</tt> snippet above.)
+(Save this to `_layouts/tag_page.html` if using the `_config.yml` snippet above.)
 
+~~~~
   ---
   layout: default
   ---
   <h2>{{ page.tag }}</h2>
   <ul>
   {% for post in page.posts %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }} | Tags: {{ post | tags }})</li>
+    <li><a href#"{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }} | Tags: {{ post | tags }})</li>
   {% endfor %}
   </ul>
 
-  <div id="tag-cloud">
+  <div id#"tag-cloud">
     {{ site | tag_cloud }}
   </div>
+~~~~
 
+### Example layout of an Atom feed
 
-=== Example layout of an Atom feed
+(Save this to `_layouts/tag_feed.xml` if using the `_config.yml` snippet above.)
 
-(Save this to <tt>_layouts/tag_feed.xml</tt> if using the <tt>_config.yml</tt> snippet above.)
-
+~~~~
   ---
   layout: nil
   ---
-  <?xml version="1.0" encoding="utf-8"?>
-  <feed xmlns="http://www.w3.org/2005/Atom">
+  <?xml version#"1.0" encoding#"utf-8"?>
+  <feed xmlns#"http://www.w3.org/2005/Atom">
    <title>Your Title - {{ page.tag }}</title>
-   <link href="http://example.com{{ page.url }}" rel="self"/>
-   <link href="http://example.com/tag/{{ page.tag }}.html"/>
+   <link href#"http://example.com{{ page.url }}" rel#"self"/>
+   <link href#"http://example.com/tag/{{ page.tag }}.html"/>
    <updated>{{ site.time | date_to_xmlschema }}</updated>
    <id>http://example.com/tag/{{ page.tag }}.html</id>
    <author>
@@ -115,24 +115,24 @@ You can attach extra data to generated tag pages by specifying <tt>tag_page_data
    {% for post in page.posts %}
    <entry>
      <title>{{ post.title }}</title>
-     <link href="http://example.com{{ post.url }}"/>
+     <link href#"http://example.com{{ post.url }}"/>
      <updated>{{ post.date | date_to_xmlschema }}</updated>
      <id>http://example.com{{ post.id }}</id>
-     <content type="html">{{ post.content | xml_escape }}</content>
+     <content type#"html">{{ post.content | xml_escape }}</content>
    </entry>
    {% endfor %}
   </feed>
+~~~~
 
-== Links
+## Links
 
-<b></b>
 Documentation:: <http://rubydoc.info/gems/jekyll-tagging/frames>
 Source code:: <http://github.com/pattex/jekyll-tagging>
 RubyGem:: <http://rubygems.org/gems/jekyll-tagging>
 
-== License
+## License
 
-=== The MIT License
+### The MIT License
 
 Copyright (c) 2010-2012 University of Cologne,
 Albertus-Magnus-Platz, 50923 Cologne, Germany
