@@ -12,6 +12,11 @@ For the list of changes made to the upstream see the commit history.
 
 The instructions below remain the same, except for the gem name and the requiring part.
 
+## Note on Forking
+All the credit goes to the original authors, Arne and Jens, and other contributors. Thank you! The purpose of this fork is mainly
+making my own website faster. In case the upstream shows interest I'll submit a PR of my changes. However, the upstream looks stale
+to me (dangling PRs and not responding to issues). Again, thanks for creating jekyll-tagging!
+
 # jekyll-tagging
 
 By Arne Eilermann <mailto:arne@kleinerdrei.net> and Jens Wille <mailto:jens.wille@uni-koeln.de>
