@@ -1,12 +1,11 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = "jekyll-tagging-lite"
-  s.version = "0.1.0"
+  s.version = "1.2.0"
   s.authors = ["Arne Eilermann", "Jens Wille", "Mehdi Sadeghi"]
   s.email = ["arne@kleinerdrei.net", "jens.wille@uni-koeln.de", "msk1361@gmail.com"]
 
   s.summary = "Jekyll plugin to automatically generate a tag cloud and tag pages."
-  s.description = "Jekyll plugin to automatically generate a tag cloud and tag pages."
   s.homepage = "http://github.com/mehdisadeghi/jekyll-tagging-lite"
   s.licenses = ["MIT"]
 
